@@ -1,0 +1,39 @@
+{
+    "name": "tastejs-todomvc-react-redux-migrate",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.tsx",
+    "scripts": {
+        "dev": "webpack serve --mode=development",
+        "build": "webpack",
+        "lint": "eslint .",
+        "lint:fix": "eslint --fix .",
+        "format": "prettier --write ."
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "react": "^19.2.4",
+        "react-dom": "^19.2.4"
+    },
+    "devDependencies": {
+        "@eslint/js": "^10.0.1",
+        "@types/react": "^19.2.14",
+        "@types/react-dom": "^19.2.3",
+        "@typescript-eslint/eslint-plugin": "^8.57.1",
+        "@typescript-eslint/parser": "^8.57.1",
+        "eslint": "^9.39.4",
+        "eslint-config-prettier": "^10.1.8",
+        "eslint-plugin-react": "^7.37.5",
+        "globals": "^17.4.0",
+        "html-webpack-plugin": "^5.6.6",
+        "prettier": "^3.8.1",
+        "ts-loader": "^9.5.4",
+        "typescript": "^5.9.3",
+        "typescript-eslint": "^8.57.1",
+        "webpack": "^5.105.4",
+        "webpack-cli": "^7.0.2",
+        "webpack-dev-server": "^5.2.3"
+    }
+}
