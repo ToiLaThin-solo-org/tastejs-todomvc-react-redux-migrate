@@ -6,6 +6,8 @@
  */
 /** @type {import('jest').Config} */
 const config = {
+    //Require to take setup file from TS file. Jest runs in CommonJS, but your setup file uses ESModule => change to require or make jest understand TS + ESM
+    preset: 'ts-jest',
     // All imported modules in your tests should be mocked automatically
     // automock: false,
 

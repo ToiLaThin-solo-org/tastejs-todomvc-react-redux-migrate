@@ -7,6 +7,7 @@
         "jsx": "react-jsx", //ts-loader does handle tsx files
         "lib": ["DOM", "ES6"],
         "target": "es6",
+        //dont forget options include, exclude, types, path
 
         "sourceMap": true,
         "declaration": true,
