@@ -1,4 +1,4 @@
-/* eslint-disable react/react-in-jsx-scope */
+ 
 import { useTodos } from '../hooks/useTodos';
 import TodoItem from './TodoItem';
 

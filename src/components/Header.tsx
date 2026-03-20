@@ -1,4 +1,4 @@
-/* eslint-disable react/react-in-jsx-scope */
+ 
 import { useTodoDispatch } from '../hooks/useTodoDispatch';
 import TextInput from './TextInput';
 
