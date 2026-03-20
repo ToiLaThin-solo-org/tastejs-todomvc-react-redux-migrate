@@ -3,7 +3,7 @@ import globals from 'globals';
 import tseslint from 'typescript-eslint';
 import prettier from 'eslint-config-prettier';
 import react from 'eslint-plugin-react';
-import sonarjs from "eslint-plugin-sonarjs";
+import sonarjs from 'eslint-plugin-sonarjs';
 import { defineConfig, globalIgnores } from 'eslint/config';
 
 //flat file config
@@ -49,5 +49,13 @@ export default defineConfig([
             '@typescript-eslint/no-explicit-any': 'error',
         },
     },
-    globalIgnores(['dist', 'node_modules', 'coverage', 'build', 'webpack.config.js', 'jest.config.js']),
+    globalIgnores([
+        'dist',
+        'node_modules',
+        'coverage',
+        'build',
+        'webpack.config.js',
+        'jest.config.js',
+        'lint-staged.config.mjs',
+    ]),
 ]);
