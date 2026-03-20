@@ -15,7 +15,7 @@ export default function TextInput(props: Readonly<TextInputProps>) {
     const handleChange = (e: React.ChangeEvent) => {
         const text = (e.target as HTMLInputElement).value.trim();
         setText(text);
-    }
+    };
 
     const handleKeyDown = (e: React.KeyboardEvent) => {
         const text = (e.target as HTMLInputElement).value.trim();
@@ -24,7 +24,7 @@ export default function TextInput(props: Readonly<TextInputProps>) {
         }
         props.onSave(text);
         if (!props.isEditMode) {
-            setText("");
+            setText('');
         }
     };
 
@@ -34,12 +34,12 @@ export default function TextInput(props: Readonly<TextInputProps>) {
             return;
         }
         props.onSave(text);
-    }
+    };
     //#endregion
 
     return (
         <input
-            className={props.isEditMode ? "edit" : "new-todo"} 
+            className={props.isEditMode ? 'edit' : 'new-todo'}
             type="text"
             value={text}
             placeholder={props.placeholder}

@@ -1,0 +1,2 @@
+npx lint-staged --fail-on-changes true --continue-on-error true
+npm run test

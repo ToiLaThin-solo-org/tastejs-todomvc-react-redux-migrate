@@ -1,4 +1,3 @@
-/* eslint-disable react/react-in-jsx-scope */
 import { useState } from 'react';
 import { Todo } from '../types/Todo';
 import TextInput from './TextInput';

@@ -1,0 +1,28 @@
+name: Lint & Test & Build
+run-name: lint-test-build
+on: [push]
+jobs:
+  lint-test-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        name: Checkout to my code branch
+      - uses: actions/setup-node@v4
+        name: Setup node and npm and PATH
+        with:
+          node-version: '20.x'
+          cache: 'npm' # 👈 key improvement
+      - run: npm ci
+        name: Clean install npm package deps
+        id: step-deps-restore-id
+        timeout-minutes: 5
+      - if: ${{ steps.step-deps-restore-id.outcome == 'success' }}
+        run: npm run lint
+        name: Run linting script on package.json
+      - if: ${{ success() }}
+        run: npm run build --if-present
+        name: Run build script on package.json
+      - if: ${{ success() }}
+        run: npm run test
+        name: Run test script on package.json
+      

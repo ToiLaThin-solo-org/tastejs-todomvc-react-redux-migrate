@@ -1,4 +1,3 @@
-/* eslint-disable react/react-in-jsx-scope */
 import { createContext, Dispatch, ReactNode, useReducer } from 'react';
 import { Todo } from '../types/Todo';
 

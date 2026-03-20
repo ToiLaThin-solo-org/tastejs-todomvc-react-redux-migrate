@@ -1,6 +1,5 @@
-/* eslint-disable react/react-in-jsx-scope */
-import { useTodoDispatch } from '../hooks/useTodoDispatch';
-import TextInput from './TextInput';
+import { useTodoDispatch } from '../../hooks/useTodoDispatch';
+import TextInput from '../TextInput';
 
 export default function Header() {
     const todoDispatch = useTodoDispatch();
