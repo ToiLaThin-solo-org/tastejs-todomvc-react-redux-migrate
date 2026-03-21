@@ -9,7 +9,7 @@
         "lint": "eslint src --ext .ts,.tsx",
         "lint:fix": "eslint src --ext .ts,.tsx --fix",
         "format": "prettier --write .",
-        "test": "jest --config=jest.config.js --coverage=false --env=jsdom --passWithNoTests --json",
+        "test": "jest --config=jest.config.js --coverage=false --env=jsdom --passWithNoTests",
         "test:coverage": "jest --config=jest.config.js --coverage=true --coverageDirectory=coverage --json",
         "prepare": "husky"
     },

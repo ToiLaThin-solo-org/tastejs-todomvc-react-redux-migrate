@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Todo } from '../types/Todo';
-import TextInput from './TextInput';
+import TextInput from './TextInput/TextInput';
 import { useTodoDispatch } from '../hooks/useTodoDispatch';
 
 export default function TodoItem({ todo }: Readonly<{ todo: Todo }>) {

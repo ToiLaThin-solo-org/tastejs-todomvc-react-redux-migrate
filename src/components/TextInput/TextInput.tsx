@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 //This should be dumb component to reuse the logic for Header and TextInput
 //isEditMode to distinguish the component used in Header or TextInput => behavious when blur/enter change
-type TextInputProps = {
+export type TextInputProps = {
     placeholder: string;
     isEditMode: boolean;
     onSave: (title: string) => void;
@@ -12,14 +12,17 @@ export default function TextInput(props: Readonly<TextInputProps>) {
     const [text, setText] = useState('');
 
     //#region Handlers
-    const handleChange = (e: React.ChangeEvent) => {
-        const text = (e.target as HTMLInputElement).value.trim();
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const text = e.target.value;
         setText(text);
     };
 
-    const handleKeyDown = (e: React.KeyboardEvent) => {
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.code !== 'Enter') {
+            return;
+        }
         const text = (e.target as HTMLInputElement).value.trim();
-        if (e.code !== 'Enter' || !text) {
+        if (!text) {
             return;
         }
         props.onSave(text);
@@ -28,9 +31,12 @@ export default function TextInput(props: Readonly<TextInputProps>) {
         }
     };
 
-    const handleBlur = (e: React.FocusEvent) => {
-        const text = (e.target as HTMLInputElement).value.trim();
-        if (!props.isEditMode || !text) {
+    const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+        if (!props.isEditMode) {
+            return;
+        }
+        const text = e.target.value.trim();
+        if (!text) {
             return;
         }
         props.onSave(text);
@@ -39,6 +45,7 @@ export default function TextInput(props: Readonly<TextInputProps>) {
 
     return (
         <input
+            data-testid="text-input-component"
             className={props.isEditMode ? 'edit' : 'new-todo'}
             type="text"
             value={text}
