@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import TextInput, { TextInputProps } from './TextInput';
+import TextInput, { TextInputProps } from '@/components/TextInput/TextInput';
 import userEvent from '@testing-library/user-event';
 
 describe('TextInput component', () => {

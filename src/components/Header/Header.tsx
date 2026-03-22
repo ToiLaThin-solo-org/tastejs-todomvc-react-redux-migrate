@@ -1,5 +1,5 @@
-import { useTodoDispatch } from '../../hooks/useTodoDispatch';
-import TextInput from '../TextInput/TextInput';
+import { useTodoDispatch } from '@/hooks/useTodoDispatch';
+import TextInput from '@/components/TextInput/TextInput';
 
 export default function Header() {
     const todoDispatch = useTodoDispatch();

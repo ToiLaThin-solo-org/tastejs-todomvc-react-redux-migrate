@@ -1,11 +1,11 @@
 //must be hoisted (top-level), if after Header, it already use the real module
-jest.mock('@hooks/useTodoDispatch', () => ({
+jest.mock('@/hooks/useTodoDispatch', () => ({
     useTodoDispatch: jest.fn(),
 }));
 
 import { render, screen, fireEvent } from '@testing-library/react';
-import Header from './Header';
-import { useTodoDispatch } from '@hooks/useTodoDispatch';
+import Header from '@/components/Header/Header';
+import { useTodoDispatch } from '@/hooks/useTodoDispatch';
 
 describe('Header component', () => {
     const mockDispatch = jest.fn();

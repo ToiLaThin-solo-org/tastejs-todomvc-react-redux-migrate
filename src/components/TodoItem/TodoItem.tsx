@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { Todo } from '../types/Todo';
-import TextInput from './TextInput/TextInput';
-import { useTodoDispatch } from '../hooks/useTodoDispatch';
+import { useTodoDispatch } from '@/hooks/useTodoDispatch';
+import { Todo } from '@/types/Todo';
+import TextInput from '@/components/TextInput/TextInput';
 
 export default function TodoItem({ todo }: Readonly<{ todo: Todo }>) {
     const [isEditing, setIsEditing] = useState(false); //which ever component have this isEditing state should have conditional render

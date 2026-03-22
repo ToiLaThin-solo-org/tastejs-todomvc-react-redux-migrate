@@ -1,5 +1,5 @@
 import { createContext, Dispatch, ReactNode, useReducer } from 'react';
-import { Todo } from '../types/Todo';
+import { Todo } from '@/types/Todo';
 
 const initialTodos: Todo[] = [];
 let newId = 0;
