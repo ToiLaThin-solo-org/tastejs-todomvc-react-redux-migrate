@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`should match snapshot 1`] = `
+exports[`Header component should render as expected snapshot 1`] = `
 <DocumentFragment>
   <header
     class="header"
@@ -10,6 +10,7 @@ exports[`should match snapshot 1`] = `
     </h1>
     <input
       class="new-todo"
+      data-testid="text-input-component"
       placeholder="What needs to be done?"
       type="text"
       value=""

@@ -7,6 +7,9 @@ module.exports = {
     },
     resolve: {
         extensions: ['.js', '.ts', '.tsx'],
+        alias: {
+            '@hooks': path.resolve(__dirname, 'src/hooks'),
+        },
     },
     plugins: [
         new HtmlWebpackPlugin({
