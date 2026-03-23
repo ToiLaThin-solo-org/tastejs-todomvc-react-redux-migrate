@@ -1,15 +1,13 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Header from '@/components/Header/Header';
-import TodoList from '@/components/TodoList/TodoList';
+import Main from '@/components/Main/Main';
 import TodoProvider from '@/contexts/TodoContext';
-import { Footer } from '@/components/Footer/Footer';
 
 export default function App() {
     const TodoApp = (
         <TodoProvider>
             <Header></Header>
-            <TodoList></TodoList>
-            <Footer></Footer>
+            <Main></Main>
         </TodoProvider>
     );
     return (

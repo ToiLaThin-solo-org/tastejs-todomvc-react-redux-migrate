@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useTodoDispatch } from '@/hooks/useTodoDispatch';
 import { Todo } from '@/types/Todo';
 import TextInput from '@/components/TextInput/TextInput';
+import { TodoActionType } from '@/contexts/TodoContext';
 
 export default function TodoItem({ todo }: Readonly<{ todo: Todo }>) {
     const [isEditing, setIsEditing] = useState(false); //which ever component have this isEditing state should have conditional render
@@ -9,9 +10,9 @@ export default function TodoItem({ todo }: Readonly<{ todo: Todo }>) {
 
     const handleSave = (id: number, text: string) => {
         if (text.length === 0) {
-            todoDispatch({ type: 'Delete', id: id });
+            todoDispatch({ type: TodoActionType.Delete, id: id });
         } else {
-            todoDispatch({ type: 'Edit', id: id, todo: { text: text } });
+            todoDispatch({ type: TodoActionType.Edit, id: id, todo: { text: text } });
         }
         setIsEditing(false);
     };
@@ -21,7 +22,7 @@ export default function TodoItem({ todo }: Readonly<{ todo: Todo }>) {
     };
 
     return (
-        <li>
+        <li data-testid="todo-item">
             {isEditing ? (
                 <TextInput isEditMode={true} placeholder="" onSave={(text) => handleSave(todo.id, text)}></TextInput>
             ) : (
@@ -30,10 +31,17 @@ export default function TodoItem({ todo }: Readonly<{ todo: Todo }>) {
                         className="toggle"
                         type="checkbox"
                         checked={todo.completed}
-                        onChange={() => todoDispatch({ type: 'ToggleComplete', id: todo.id })}
+                        onChange={() => todoDispatch({ type: TodoActionType.ToggleCompleteTodo, id: todo.id })}
+                        data-testid="todo-item-toggle"
                     />
-                    <label onDoubleClick={handleDoubleClick}>{todo.text}</label>
-                    <button className="destroy" onClick={() => todoDispatch({ type: 'Delete', id: todo.id })} />
+                    <label onDoubleClick={handleDoubleClick} data-testid="todo-item-label">
+                        {todo.text}
+                    </label>
+                    <button
+                        className="destroy"
+                        onClick={() => todoDispatch({ type: TodoActionType.Delete, id: todo.id })}
+                        data-testid="todo-item-button"
+                    />
                 </div>
             )}
         </li>

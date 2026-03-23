@@ -6,6 +6,7 @@ jest.mock('@/hooks/useTodoDispatch', () => ({
 import { render, screen, fireEvent } from '@testing-library/react';
 import Header from '@/components/Header/Header';
 import { useTodoDispatch } from '@/hooks/useTodoDispatch';
+import { TodoActionType } from '@/contexts/TodoContext';
 
 describe('Header component', () => {
     const mockDispatch = jest.fn();
@@ -31,13 +32,14 @@ describe('Header component', () => {
         render(<Header />);
 
         const inputElement = screen.getByPlaceholderText('What needs to be done?');
-        fireEvent.change(inputElement, { target: { value: 'some value' } });
+        const text = 'some value';
+        fireEvent.change(inputElement, { target: { value: text } });
         fireEvent.keyDown(inputElement, { key: 'Enter', code: 'Enter' });
 
         expect(mockDispatch).toHaveBeenCalledTimes(1);
         expect(mockDispatch).toHaveBeenCalledWith({
-            type: 'Add',
-            text: 'some value',
+            type: TodoActionType.Add,
+            text: text,
         });
     });
 });

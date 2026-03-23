@@ -1,16 +1,18 @@
 import { Link } from 'react-router-dom';
 import { FilterActive, FilterAll, FilterCompleted, FilterURLParameter } from '@/types/Filter';
-import { useVisibleTodos } from '@/hooks/useVisibleTodos';
 
-export const Footer = () => {
-    const visibleTodos = useVisibleTodos();
-    const visibleTodosCount = visibleTodos.length;
+type FooterProps = {
+    activeTodosCount: number;
+    completedTodosCount: number;
+    onClearCompleted: () => void;
+};
+export const Footer = ({ activeTodosCount, completedTodosCount, onClearCompleted }: FooterProps) => {
     return (
-        <footer>
-            <span>
-                {visibleTodosCount} {visibleTodosCount === 1 ? 'item' : 'items'} left!
+        <footer className="footer" data-testid="footer">
+            <span className="todo-count">
+                {activeTodosCount} {activeTodosCount === 1 ? 'item' : 'items'} left!
             </span>
-            <ul>
+            <ul className="filters" data-testid="footer-navigation">
                 <li>
                     <Link to={{ search: `${FilterURLParameter}=${FilterAll}` }}>All</Link>
                 </li>
@@ -21,6 +23,11 @@ export const Footer = () => {
                     <Link to={{ search: `${FilterURLParameter}=${FilterCompleted}` }}>Completed</Link>
                 </li>
             </ul>
+            {completedTodosCount > 0 ? (
+                <button className="clear-completed" onClick={onClearCompleted}>
+                    Clear completed
+                </button>
+            ) : null}
         </footer>
     );
 };

@@ -4,13 +4,14 @@ exports[`Header component should render as expected snapshot 1`] = `
 <DocumentFragment>
   <header
     class="header"
+    data-testid="header"
   >
     <h1>
       todos
     </h1>
     <input
       class="new-todo"
-      data-testid="text-input-component"
+      data-testid="text-input"
       placeholder="What needs to be done?"
       type="text"
       value=""
