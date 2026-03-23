@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import TextInput, { TextInputProps } from './TextInput';
+import TextInput, { TextInputProps } from '@/components/TextInput/TextInput';
 import userEvent from '@testing-library/user-event';
 
 describe('TextInput component', () => {
@@ -22,14 +22,14 @@ describe('TextInput component', () => {
         { inputValue: ' Some V@lue123 ', mode: 'new', isEditMode: false },
     ];
 
-    const invalidTestCases: (TestCaseType & { mode: string })[] = [
+    const emptyOrWhitespaceTestCases: (TestCaseType & { mode: string })[] = [
         { inputValue: '', mode: 'edit', isEditMode: true },
         { inputValue: '  ', mode: 'edit', isEditMode: true },
         { inputValue: '', mode: 'new', isEditMode: false },
         { inputValue: '  ', mode: 'new', isEditMode: false },
     ];
     const validTestCasesEditMode = validTestCases.filter((tc) => tc.isEditMode === true);
-    const invalidTestCasesEditMode = invalidTestCases.filter((tc) => tc.isEditMode === true);
+    const emptyOrWhitespaceTestCasesEditMode = emptyOrWhitespaceTestCases.filter((tc) => tc.isEditMode === true);
 
     //#region Change: This test is low-value, nearly test React
     it.each(validTestCases)(
@@ -54,13 +54,13 @@ describe('TextInput component', () => {
         },
     );
 
-    it.each(invalidTestCases)(
-        'should NOT call onSave on pressing Enter in mode $mode with invalid inputs',
+    it.each(emptyOrWhitespaceTestCases)(
+        'should call onSave on pressing Enter in mode $mode with empty/whitespace inputs',
         async ({ inputValue, isEditMode }: TestCaseType) => {
             const { inputElement, user, onSave } = setupComponent({ isEditMode: isEditMode });
             await user.type(inputElement, `${inputValue}{enter}`);
 
-            expect(onSave).not.toHaveBeenCalled();
+            expect(onSave).toHaveBeenCalledTimes(1);
         },
     );
     //#endregion
@@ -78,12 +78,16 @@ describe('TextInput component', () => {
         },
     );
 
-    it.each(invalidTestCasesEditMode)(
+    it.each(emptyOrWhitespaceTestCasesEditMode)(
         'should NOT call onSave on blur',
         async ({ inputValue, isEditMode }: TestCaseType) => {
             const { inputElement, onSave, user } = setupComponent({ isEditMode: isEditMode });
 
-            await user.type(inputElement, `${inputValue}{enter}`);
+            if (inputValue === '') {
+                await user.clear(inputElement);
+            } else {
+                await user.type(inputElement, inputValue);
+            }
             await user.tab();
 
             expect(onSave).not.toHaveBeenCalled();

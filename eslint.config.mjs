@@ -49,13 +49,5 @@ export default defineConfig([
             '@typescript-eslint/no-explicit-any': 'error',
         },
     },
-    globalIgnores([
-        'dist',
-        'node_modules',
-        'coverage',
-        'build',
-        'webpack.config.js',
-        'jest.config.js',
-        'lint-staged.config.mjs',
-    ]),
+    globalIgnores(['dist', 'node_modules', 'coverage', 'build', 'webpack.*', 'jest.*', 'lint-staged.*']),
 ]);

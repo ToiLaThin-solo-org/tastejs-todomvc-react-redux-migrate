@@ -22,9 +22,6 @@ export default function TextInput(props: Readonly<TextInputProps>) {
             return;
         }
         const text = (e.target as HTMLInputElement).value.trim();
-        if (!text) {
-            return;
-        }
         props.onSave(text);
         if (!props.isEditMode) {
             setText('');
@@ -45,7 +42,7 @@ export default function TextInput(props: Readonly<TextInputProps>) {
 
     return (
         <input
-            data-testid="text-input-component"
+            data-testid="text-input"
             className={props.isEditMode ? 'edit' : 'new-todo'}
             type="text"
             value={text}

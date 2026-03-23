@@ -20,10 +20,10 @@
         // Now we using baseUrl, all import should resolve from this
         "isolatedModules": true,
         //This resolution has higher priority than lookups from node_modules.
-        "baseUrl": "./",
+        "baseUrl": ".",
         // relative to the baseUrl if set, or to the tsconfig file itself otherwise
         "paths": {
-            "@hooks/*": ["./src/hooks/*"]
+            "@/*": ["./src/*"]
         }
     }
 }
