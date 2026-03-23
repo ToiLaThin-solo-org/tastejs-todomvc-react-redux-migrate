@@ -13,7 +13,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'TodoMVC: React-Redux',
+            title: 'TodoMVC: React',
             template: 'public/index.html',
         }),
     ],

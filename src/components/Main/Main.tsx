@@ -29,7 +29,7 @@ export default function Main() {
                     Toggle All Input
                 </label>
             </div>
-            <ul>
+            <ul className="todo-list" data-testid="todo-list">
                 {visibleTodos.map((td) => (
                     <TodoItem key={td.id} todo={td}></TodoItem>
                 ))}
