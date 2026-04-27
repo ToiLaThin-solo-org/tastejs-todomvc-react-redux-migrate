@@ -1,19 +1,19 @@
 import TodoItem from '@/components/TodoItem/TodoItem';
 import { useVisibleTodos } from '@/hooks/useVisibleTodos';
 import { Footer } from '@/components/Footer/Footer';
-import { useActiveTodosCount, useCompletedTodosCount } from '@/hooks/useCompletedTodos';
 import { useTodoDispatch } from '@/hooks/useTodoDispatch';
-import { useTodos } from '@/hooks/useTodos';
+import { useTodos, useTodoSelector } from '@/hooks/useTodos';
 import { TodoActionType } from '@/contexts/TodoContext';
+import { todoSelectors } from '@/selectors/todoSelectors';
 
 export default function Main() {
     const todos = useTodos();
     if (!todos?.length) {
         return null;
     }
-    const completedTodosCount = useCompletedTodosCount();
     const visibleTodos = useVisibleTodos();
-    const activeTodosCount = useActiveTodosCount();
+    const completedTodosCount = useTodoSelector(todoSelectors.completedCount);
+    const activeTodosCount = useTodoSelector(todoSelectors.activeCount);
     const todoDispatch = useTodoDispatch();
     return (
         <main className="main" data-testid="main">

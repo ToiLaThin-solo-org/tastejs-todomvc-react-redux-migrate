@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { FilterActive, FilterAll, FilterCompleted, FilterURLParameter } from '@/types/Filter';
 
-type FooterProps = {
+export type FooterProps = {
     activeTodosCount: number;
     completedTodosCount: number;
     onClearCompleted: () => void;
