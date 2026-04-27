@@ -1,10 +1,10 @@
 import { useTodos } from '@/hooks/useTodos';
 import { useTodoFilter } from '@/hooks/useTodoFilter';
-import { getVisibleTodos } from '@/selectors/selectorTodo';
+import { todoSelectors } from '@/selectors/todoSelectors';
+import { useMemo } from 'react';
 
 export function useVisibleTodos() {
     const todos = useTodos();
     const filter = useTodoFilter();
-    const visibleTodos = getVisibleTodos(todos, filter);
-    return visibleTodos;
+    return useMemo(() => todoSelectors.visibleTodos(todos, filter), [todos, filter]);
 }

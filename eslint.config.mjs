@@ -15,7 +15,6 @@ export default defineConfig([
     prettier, //Prettier safely disables conflicting rules
     {
         files: ['**/*.{js,mjs,jsx,ts,tsx}'],
-
         languageOptions: {
             globals: {
                 ...globals.browser,
