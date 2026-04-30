@@ -8,13 +8,14 @@ import { todoSelectors } from '@/selectors/todoSelectors';
 
 export default function Main() {
     const todos = useTodos();
-    if (!todos?.length) {
-        return null;
-    }
     const visibleTodos = useVisibleTodos();
     const completedTodosCount = useTodoSelector(todoSelectors.completedCount);
     const activeTodosCount = useTodoSelector(todoSelectors.activeCount);
     const todoDispatch = useTodoDispatch();
+
+    if (!todos?.length) {
+        return null;
+    }
     return (
         <main className="main" data-testid="main">
             <div className="toggle-all-container">
