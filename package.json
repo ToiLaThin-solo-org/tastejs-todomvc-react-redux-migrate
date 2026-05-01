@@ -11,7 +11,9 @@
         "format": "prettier --write .",
         "test": "jest --config=jest.config.js --coverage=false --env=jsdom --passWithNoTests",
         "test:coverage": "jest --config=jest.config.js --coverage=true --coverageDirectory=coverage --json",
-        "prepare": "husky"
+        "prepare": "husky",
+        "e2e:open": "cypress open",
+        "e2e:run": "cypress run"
     },
     "keywords": [],
     "author": "",
@@ -32,6 +34,7 @@
         "@typescript-eslint/eslint-plugin": "^8.57.1",
         "@typescript-eslint/parser": "^8.57.1",
         "css-loader": "^7.1.4",
+        "cypress": "^15.14.2",
         "eslint": "^9.39.4",
         "eslint-config-prettier": "^10.1.8",
         "eslint-plugin-react": "^7.37.5",

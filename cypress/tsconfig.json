@@ -1,0 +1,13 @@
+{
+    //separate tsconfig for cypress
+    "compilerOptions": {
+        "target": "ES6",
+        "lib": ["ES6", "DOM"],
+        "types": ["cypress", "cypress/support/command"],
+        "module": "nodenext",
+        "moduleResolution": "nodenext",
+        "resolveJsonModule": true,
+        "isolatedModules": false
+    },
+    "include": ["**/*.ts", "cypress/**/*.d.ts"]
+}
